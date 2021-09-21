@@ -1,6 +1,5 @@
 """
 Python script for batch geocoding of addresses using the Google Geocoding API.
-
 This script allows for massive lists of addresses to be geocoded for free by pausing when the 
 geocoder hits the free rate limit set by Google (2500 per day).  
 """
@@ -17,7 +16,7 @@ ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
 logger.addHandler(ch)
 
-#------------------ CONFIGURATION -------------------------------
+#------------------ CONFIGURATION Google API -------------------------------
 
 # Set your Google API key here. 
 # Even if using the free 2500 queries a day, its worth getting an API key since the rate limit is 50 / second.
@@ -25,13 +24,13 @@ logger.addHandler(ch)
 # With a "Google Maps Geocoding API" key from https://console.developers.google.com/apis/, 
 # the daily limit will be 2500, but at a much faster rate.
 # Example: API_KEY = 
-API_KEY = 'AIzaSyCgM5k5PMof2CZDI20HbYHxbTtwmxp0tsM'
+API_KEY = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx'
 # Backoff time sets how many minutes to wait between google pings when your API limit is hit
 BACKOFF_TIME = 30
 # Set your output file name here.
-output_filename = 'coding/YazPannelCleanedGeocode_Google_Geocoding_API.csv'
+output_filename = 'coding/ToGeocodeInputs.csv'
 # Set your input file here
-input_filename = "coding/YazPannelCleanedGeocode.csv"
+input_filename = "coding/GeocodeOutputs.csv"
 # Specify the column name in your input data that contains addresses here
 address_column_name = "Address"
 # Return Full Google Results? If True, full JSON results from Google are included in output
@@ -49,11 +48,11 @@ if address_column_name not in data.columns:
 # Make a big list of all of the addresses to be processed.
 addresses = data[address_column_name].tolist()
 
-# **** DEMO DATA / Indonesia SPECIFIC! ****
+# **** DEMO DATA / Canada SPECIFIC! ****
 # We know that these addresses are in Indonesia, and there's a column for the district or customer name
 # so add this for accuracy. It can be interchange with pre testing for the best results
 # (remove this line / alter for your own dataset)
-addresses = (data[address_column_name] + ',' + data['Name'] + ',' + data['Address'] + ',Vietnam').tolist()
+addresses = (data[address_column_name] + ',' + data['Name'] + ',' + data['Address'] + ',England').tolist()
 
 
 #------------------	FUNCTION DEFINITIONS ------------------------
