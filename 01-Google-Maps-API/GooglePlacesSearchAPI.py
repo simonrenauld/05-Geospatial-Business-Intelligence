@@ -14,7 +14,7 @@ import json
 googleGeocodeUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query={}&location={},{}&rankby=distance&key={}'
 # For keywords https://developers.google.com/maps/documentation/places/web-service/supported_types
 keyword = "XXXXXXX"
-key = 'AIzaSyCgM5k5PMof2CZDI20HbYHxbTtwmxp0tsM'
+key = 'xxxxxxx'
 
 with open('3.csv', newline='') as f_input, open('test.csv', 'w', newline='',encoding="utf-8") as f_output:
     csv_input = csv.reader(f_input)
